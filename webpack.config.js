@@ -9,7 +9,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx$/,
-        loader: 'jsx-loader?insertPragma=React.DOM&harmony'
+        loader: 'babel-loader'
       }
     ]
   },
