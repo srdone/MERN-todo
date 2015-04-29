@@ -1,0 +1,19 @@
+{
+  "name": "MERN-Todo",
+  "version": "1.0.0",
+  "description": "A todo application using the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephen Done <srdone@gmail.com> (http://www.firstclassscouting.org)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.3",
+    "react": "^0.13.2"
+  },
+  "devDependencies": {
+    "webpack": "^1.8.10",
+    "webpack-dev-server": "^1.8.2"
+  }
+}
