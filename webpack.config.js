@@ -15,7 +15,8 @@ module.exports = {
   },
   externals: {
     'react': 'React',
-    'marked': 'marked'
+    'marked': 'marked',
+    '$': '$'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

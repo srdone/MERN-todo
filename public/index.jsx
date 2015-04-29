@@ -8,4 +8,4 @@ var CommentBox = require('./components/CommentBox');
 
 React.render(<Hello />, document.getElementById('content'));
 
-React.render(<CommentBox data={data} />, document.getElementById('tutorial'));
+React.render(<CommentBox url="data.json" pollInterval={2000}/>, document.getElementById('tutorial'));
