@@ -7,6 +7,7 @@ app.get('/', function (req, res) {
 });
 
 app.use('/', express.static(__dirname + '/public/'));
+app.use('/', express.static(__dirname + '/node_modules/'));
 
 var port = 3000;
 

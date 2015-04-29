@@ -4,6 +4,9 @@
   "description": "A todo application using the MERN stack",
   "main": "server.js",
   "scripts": {
+    "start": "npm run serve | npm run dev",
+    "serve": "nodemon server.js",
+    "dev": "webpack-dev-server --progress --colors --port 8090",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stephen Done <srdone@gmail.com> (http://www.firstclassscouting.org)",
@@ -13,6 +16,7 @@
     "react": "^0.13.2"
   },
   "devDependencies": {
+    "jsx-loader": "^0.13.2",
     "webpack": "^1.8.10",
     "webpack-dev-server": "^1.8.2"
   }
