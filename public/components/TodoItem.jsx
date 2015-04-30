@@ -1,3 +1,5 @@
+import Checkbox from './Checkbox';
+
 export default class TodoItem extends React.Component{
 
   constructor(props) {
@@ -46,6 +48,7 @@ export default class TodoItem extends React.Component{
             <input type="checkbox" checked={this.state.todo.completed} onChange={this._handleChange} ref="todoComplete"/> Is Complete
           </label>
         </div>
+        <Checkbox checked={this.props.todo.completed} update={this._handleChange} label="Is Complete"/>
     </div>
   }
 
