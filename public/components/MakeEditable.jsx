@@ -22,7 +22,7 @@ export default class MakeEditable extends React.Component {
     } else {
       return <div>
           {this.props.children}
-          <button onClick={this._toggleEditable}>Make Editable</button>
+          <button className="btn btn-default" onClick={this._toggleEditable}>Make Editable</button>
         </div>
     }
   }
