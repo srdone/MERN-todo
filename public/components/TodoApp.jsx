@@ -20,7 +20,7 @@ export default class TodoApp extends React.Component {
 
   render() {
     return <div>
-      <TodoForm />
+      <TodoForm url={this.props.url}/>
       <TodoList todos={this.state.todos}/>
     </div>
   }
