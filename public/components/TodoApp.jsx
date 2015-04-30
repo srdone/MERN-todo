@@ -1,7 +1,13 @@
+import TodoForm from './TodoForm';
+import TodoList from './TodoList';
+
 export default class TodoApp extends React.Component {
 
   render() {
-    return <div>I'm the Todo App</div>
+    return <div>
+      <TodoForm />
+      <TodoList />
+    </div>
   }
 
 }
