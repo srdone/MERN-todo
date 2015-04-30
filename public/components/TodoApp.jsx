@@ -14,7 +14,6 @@ export default class TodoApp extends React.Component {
               <span className="navbar-brand">Getting Things Done</span>
               <ul className="nav nabar-nav">
                 <li><Link to="app">Main</Link></li>
-                <li><Link to="edit">Edit Route</Link></li>
               </ul>
             </div>
           </div>

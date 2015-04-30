@@ -1,3 +1,5 @@
+import {Link} from 'react-router'
+
 export default class TodoItem extends React.Component {
 
   constructor() {
@@ -16,12 +18,17 @@ export default class TodoItem extends React.Component {
       }
     })();
 
+    var link = '/edit/' + this.props.todo._id;
+
     return (
       <div>
         <div className="checkbox">
           <label>
             <input type="checkbox" checked={this.props.todo.completed} />
             {itemText}
+            <button className="btn btn-primary">
+              <Link to="edit" params={{todoId: this.props.todo._id}}>Edit</Link>
+            </button>
           </label>
         </div>
       </div>

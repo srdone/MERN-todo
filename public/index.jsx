@@ -11,7 +11,7 @@ var RouteHandler = Router.RouteHandler;
 var routes = (
   <Route name="app" path="/" handler={TodoApp}>
     <DefaultRoute handler={TodosList} />
-    <Route name="edit" path="/edit" handler={EditTodo} />
+    <Route name="edit" path="edit/:todoId" handler={EditTodo} />
   </Route>
 );
 
