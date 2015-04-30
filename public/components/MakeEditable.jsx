@@ -16,7 +16,7 @@ export default class MakeEditable extends React.Component {
 
     if (this.state.editable) {
       return <div>
-        Made Editable
+        <input type="text"/>
         <button onClick={this._toggleEditable}>Done Editing</button>
         {this.props.children}
       </div>

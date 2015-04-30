@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",
+    "rewire": "^2.3.3",
+    "rewire-webpack": "^1.0.0",
     "webpack": "^1.8.10",
     "webpack-dev-server": "^1.8.2"
   }

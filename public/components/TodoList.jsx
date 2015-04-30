@@ -3,14 +3,20 @@ import MakeEditable from './MakeEditable';
 
 export default class TodoList extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+
+    let todoNodes = this.props.todos.map((todo) => {
+      return <MakeEditable value={todo.text}>
+          <TodoItem todo={todo}/>
+        </MakeEditable>
+    });
+
     return <div>
-      <MakeEditable>
-        <TodoItem />
-      </MakeEditable>
-      <MakeEditable>
-        <TodoItem />
-      </MakeEditable>
+      {todoNodes}
     </div>
   }
 
