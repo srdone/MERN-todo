@@ -5,12 +5,23 @@ export default class TodoApp extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {todos: []}
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: this.props.url + '/todos',
+      dataType: 'json',
+      crossDomain: true,
+      success: (todos) => this.setState({todos: todos}),
+      error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
+    })
   }
 
   render() {
     return <div>
       <TodoForm />
-      <TodoList todos={this.props.todos}/>
+      <TodoList todos={this.state.todos}/>
     </div>
   }
 

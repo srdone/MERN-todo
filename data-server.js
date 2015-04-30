@@ -1,7 +1,8 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
-  methodOverride = require('method-override');
+  methodOverride = require('method-override'),
+  cors = require('cors');
 
 var app = express();
 
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //override REST methods
 app.use(methodOverride());
+//support CORS for all origins
+app.use(cors());
 
 app.get('/', function (req, res) {
   res.write('Hello World');
