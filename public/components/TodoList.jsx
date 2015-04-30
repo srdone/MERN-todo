@@ -10,9 +10,7 @@ export default class TodoList extends React.Component {
   render() {
 
     let todoNodes = this.props.todos.map((todo) => {
-      return <MakeEditable value={todo.title}>
-          <TodoItem todo={todo}/>
-        </MakeEditable>
+      return <TodoItem todo={todo}/>
     });
 
     return <div>
