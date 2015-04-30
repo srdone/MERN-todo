@@ -8,12 +8,16 @@ export default class TodoApp extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          I'm the Todo App
-          <ul>
-            <li><Link to="app">Main</Link></li>
-            <li><Link to="edit">Edit Route</Link></li>
-          </ul>
+        <header className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <span className="navbar-brand">Getting Things Done</span>
+              <ul className="nav nabar-nav">
+                <li><Link to="app">Main</Link></li>
+                <li><Link to="edit">Edit Route</Link></li>
+              </ul>
+            </div>
+          </div>
         </header>
 
         <RouteHandler />
