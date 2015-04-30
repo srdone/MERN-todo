@@ -1,10 +1,11 @@
-import TodoItem from './TodoList';
+import TodoItem from './TodoItem';
 
 export default class TodoList extends React.Component {
 
   render() {
     return <div>
-      I'm a todo item
+      <TodoItem />
+      <TodoItem />
     </div>
   }
 
