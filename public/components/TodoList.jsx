@@ -1,11 +1,16 @@
 import TodoItem from './TodoItem';
+import MakeEditable from './MakeEditable';
 
 export default class TodoList extends React.Component {
 
   render() {
     return <div>
-      <TodoItem />
-      <TodoItem />
+      <MakeEditable>
+        <TodoItem />
+      </MakeEditable>
+      <MakeEditable>
+        <TodoItem />
+      </MakeEditable>
     </div>
   }
 
