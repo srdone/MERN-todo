@@ -7,7 +7,9 @@ export default class MakeEditable extends React.Component {
   }
 
   _toggleEditable() {
-    this.setState({editable: true});
+    this.setState((previousState) => {
+      return {editable: !previousState.editable}
+    });
   }
 
   render() {
@@ -15,6 +17,7 @@ export default class MakeEditable extends React.Component {
     if (this.state.editable) {
       return <div>
         Made Editable
+        <button onClick={this._toggleEditable}>Done Editing</button>
         {this.props.children}
       </div>
     } else {
