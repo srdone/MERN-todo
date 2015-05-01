@@ -6,6 +6,7 @@ export default class EditTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {todo: {}, originalTodo: {}};
+
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleCancel = this._handleCancel.bind(this);

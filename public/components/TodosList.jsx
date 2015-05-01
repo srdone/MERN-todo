@@ -34,6 +34,7 @@ export default class TodosList extends React.Component {
     return (
       <div className="container-fluid">
         <AddTodo todoAdded={this._handleNewTodo}/>
+        <hr />
         <div className="h3">Get These Things Done</div>
         {todos}
       </div>

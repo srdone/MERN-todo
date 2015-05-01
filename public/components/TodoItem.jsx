@@ -4,6 +4,12 @@ export default class TodoItem extends React.Component {
 
   constructor() {
     super();
+    this._handleEdit = this._handleEdit.bind(this);
+  }
+
+  _handleEdit() {
+    var { router } = this.context;
+    router.transitionTo('edit', {todoId: this.props.todo._id});
   }
 
   render() {
@@ -12,9 +18,9 @@ export default class TodoItem extends React.Component {
 
     var itemText = (() => {
       if (this.props.todo.completed) {
-        return <del>{this.props.todo.title}: Due Date: {dueDate}</del>
+        return <del className="h5">{this.props.todo.title}: Due Date: {dueDate}</del>
       } else {
-        return <span>{this.props.todo.title}: Due Date: {dueDate}</span>
+        return <span className="h5">{this.props.todo.title}: Due Date: {dueDate}</span>
       }
     })();
 
@@ -26,8 +32,8 @@ export default class TodoItem extends React.Component {
           <label>
             <input type="checkbox" checked={this.props.todo.completed} />
             {itemText}
-            <button className="btn btn-primary">
-              <Link to="edit" params={{todoId: this.props.todo._id}}>Edit</Link>
+            <button className="btn btn-primary" onClick={this._handleEdit}>
+              Edit
             </button>
           </label>
         </div>
@@ -36,3 +42,7 @@ export default class TodoItem extends React.Component {
   }
 
 }
+
+TodoItem.contextTypes = {
+  router: React.PropTypes.func
+};
