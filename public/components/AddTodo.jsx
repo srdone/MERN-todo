@@ -1,3 +1,5 @@
+import { saveTodo } from '../actions/rest.js';
+
 export default class AddTodo extends React.Component {
 
   constructor() {
@@ -15,21 +17,17 @@ export default class AddTodo extends React.Component {
       dueDate: newTodoDueDateNode.value.trim()
     };
 
-    $.ajax({
-      url: 'http://localhost:8082' + '/todos',
-      type: 'POST',
-      dataType: 'json',
-      crossDomain: true,
-      data: newTodo,
-      success: (savedTodo) => {
+    saveTodo(newTodo,
+      (savedTodo) => {
         newTodoTitleNode.value = '';
         newTodoDueDateNode.value = '';
         this.props.todoAdded(savedTodo);
       },
-      error: (xhr, status, err) => {
+      (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
       }
-    });
+    );
+
   };
 
   render() {
