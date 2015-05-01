@@ -1,7 +1,9 @@
+import Input from '../layout-components/Input';
+
 export default class EditTodo extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {todo: {}, originalTodo: {}};
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
@@ -10,7 +12,7 @@ export default class EditTodo extends React.Component {
     this._goHome = this._goHome.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     var { router } = this.context;
     var todoId = router.getCurrentParams().todoId;
     $.ajax({
@@ -78,16 +80,24 @@ export default class EditTodo extends React.Component {
 
   render() {
 
-    var todo = this.state.todo;
+    var { title, dueDate, completed } = this.state.todo;
+
+    dueDate = moment(dueDate).format('YYYY-MM-DD');
 
     return (
       <form>
+        <Input label="Todo Title"
+               type="text"
+               id="title"
+               value={title}
+               onChange={this._handleChange} />
+
         <div className="form-group">
           <label htmlFor="title">Todo Title</label>
           <input type="text"
                  className="form-control"
                  id="title"
-                 value={todo.title}
+                 value={title}
                  ref="title"
                  onChange={this._handleChange} />
         </div>
@@ -96,13 +106,14 @@ export default class EditTodo extends React.Component {
           <input type="date"
                  className="form-control"
                  id="dueDate"
-                 value={todo.dueDate}
+                 value={dueDate}
                  ref="dueDate"
                  onChange={this._handleChange} />
         </div>
+
         <div className="checkbox">
           <label>
-            <input type="checkbox" checked={todo.completed} onChange={this._handleChange} id="completed"/>
+            <input type="checkbox" checked={completed} onChange={this._handleChange} id="completed"/>
           </label>
         </div>
         <button className="btn btn-primary" onClick={this._handleSubmit}>Submit</button>
