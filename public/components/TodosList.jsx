@@ -16,12 +16,12 @@ export default class TodosList extends React.Component {
       crossDomain: true,
       success: (todos) => this.setState({todos: todos}),
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
-    })
+    });
   }
 
   _handleNewTodo(newTodo) {
     var todos = this.state.todos;
-    todos.push(newTodo);
+    todos.unshift(newTodo);
     this.setState({todos: todos});
   }
 
