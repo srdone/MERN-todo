@@ -1,4 +1,4 @@
-import { REST_ENDPOINT } from '../constants/ajax';
+import { REST_ENDPOINT } from '../constants/servers';
 
 function createTodo (todo, success, error) {
 
@@ -68,9 +68,25 @@ function deleteTodo (id, success, error) {
   })
 }
 
+function getTodos (success, error) {
+  $.ajax({
+    url: REST_ENDPOINT + '/todos',
+    dataType: 'json',
+    crossDomain: true,
+    success: success,
+    error: (xhr, status, err) => {
+      console.error(REST_ENDPOINT, status, err.toString());
+      if (error) {
+        error(err);
+      }
+    }
+  });
+}
+
 module.exports = {
   createTodo: createTodo,
   getTodoById: getTodoById,
   updateTodo: updateTodo,
-  deleteTodo: deleteTodo
+  deleteTodo: deleteTodo,
+  getTodos: getTodos
 };

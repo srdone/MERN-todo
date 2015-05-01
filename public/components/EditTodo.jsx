@@ -113,3 +113,7 @@ export default class EditTodo extends React.Component {
 EditTodo.contextTypes = {
   router: React.PropTypes.func
 };
+
+EditTodo.propTypes = {
+
+};

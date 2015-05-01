@@ -77,3 +77,7 @@ export default class TodoItem extends React.Component {
 TodoItem.contextTypes = {
   router: React.PropTypes.func
 };
+
+TodoItem.propTypes = {
+  todo: React.PropTypes.object.isRequired
+};

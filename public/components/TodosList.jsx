@@ -1,5 +1,6 @@
 import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
+import { getTodos } from '../actions/rest';
 
 export default class TodosList extends React.Component {
 
@@ -10,13 +11,7 @@ export default class TodosList extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: 'http://localhost:8082' + '/todos',
-      dataType: 'json',
-      crossDomain: true,
-      success: (todos) => this.setState({todos: todos}),
-      error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
-    });
+    getTodos((todos) => this.setState({todos: todos}));
   }
 
   _handleNewTodo(newTodo) {

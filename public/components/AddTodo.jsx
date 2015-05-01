@@ -49,3 +49,7 @@ export default class AddTodo extends React.Component {
   }
 
 };
+
+AddTodo.propTypes = {
+
+};
