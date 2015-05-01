@@ -1,10 +1,12 @@
 import TodoItem from './TodoItem';
+import AddTodo from './AddTodo';
 
 export default class TodosList extends React.Component {
 
   constructor() {
     super();
     this.state = {todos: []}
+    this._handleNewTodo = this._handleNewTodo.bind(this);
   }
 
   componentDidMount() {
@@ -17,6 +19,12 @@ export default class TodosList extends React.Component {
     })
   }
 
+  _handleNewTodo(newTodo) {
+    var todos = this.state.todos;
+    todos.push(newTodo);
+    this.setState({todos: todos});
+  }
+
   render() {
 
     var todos = this.state.todos.map((todo) => {
@@ -25,6 +33,7 @@ export default class TodosList extends React.Component {
 
     return (
       <div className="container-fluid">
+        <AddTodo todoAdded={this._handleNewTodo}/>
         <div className="h3">Get These Things Done</div>
         {todos}
       </div>
