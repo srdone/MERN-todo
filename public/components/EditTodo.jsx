@@ -19,10 +19,24 @@ export default class EditTodo extends React.Component {
 
   render() {
 
+    var todo = this.state.todo;
+
     return (
-      <div>
-        {this.state.todo}
-      </div>
+      <form>
+        <div className="form-group">
+          <label htmlFor="todoTitle">Todo Title</label>
+          <input type="text" className="form-control" id="todoTitle" value={todo.title} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="todoDueDate">Due Date</label>
+          <input type="date" className="form-control" id="todoDueDate" value={todo.dueDate} />
+        </div>
+        <div className="checkbox">
+          <label>
+            <input type="checkbox" checked={todo.completed} />
+          </label>
+        </div>
+      </form>
     )
 
   }
