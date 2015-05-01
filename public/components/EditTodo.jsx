@@ -64,41 +64,45 @@ export default class EditTodo extends React.Component {
     dueDate = moment(dueDate).format('YYYY-MM-DD');
 
     return (
-      <form>
-        <Input label="Todo Title"
-               type="text"
-               id="title"
-               value={title}
-               onChange={this._handleChange} />
-
-        <div className="form-group">
-          <label htmlFor="title">Todo Title</label>
-          <input type="text"
-                 className="form-control"
+      <div className="container-fluid">
+        <form>
+          <Input label="Todo Title"
+                 type="text"
                  id="title"
                  value={title}
-                 ref="title"
                  onChange={this._handleChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="dueDate">Due Date</label>
-          <input type="date"
-                 className="form-control"
-                 id="dueDate"
-                 value={dueDate}
-                 ref="dueDate"
-                 onChange={this._handleChange} />
-        </div>
 
-        <div className="checkbox">
-          <label>
-            <input type="checkbox" checked={completed} onChange={this._handleChange} id="completed"/>
-          </label>
-        </div>
-        <button className="btn btn-primary" onClick={this._handleSubmit}>Submit</button>
-        <button className="btn btn-warning" onClick={this._handleCancel}>Cancel</button>
-        <button className="btn btn-danger" onClick={this._handleDelete}>Delete</button>
-      </form>
+          <div className="form-group">
+            <label htmlFor="title">Todo Title</label>
+            <input type="text"
+                   className="form-control"
+                   id="title"
+                   value={title}
+                   ref="title"
+                   onChange={this._handleChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="dueDate">Due Date</label>
+            <input type="date"
+                   className="form-control"
+                   id="dueDate"
+                   value={dueDate}
+                   ref="dueDate"
+                   onChange={this._handleChange} />
+          </div>
+
+          <div className="checkbox">
+            <label>
+              <input type="checkbox" checked={completed} onChange={this._handleChange} id="completed"/>
+            </label>
+          </div>
+          <div className="btn-group">
+            <button className="btn btn-primary" onClick={this._handleSubmit}>Submit</button>
+            <button className="btn btn-warning" onClick={this._handleCancel}>Cancel</button>
+            <button className="btn btn-danger" onClick={this._handleDelete}>Delete</button>
+          </div>
+        </form>
+      </div>
     )
 
   }
