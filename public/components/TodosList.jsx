@@ -37,3 +37,7 @@ export default class TodosList extends React.Component {
   }
   
 }
+
+TodosList.propTypes = {
+
+};
