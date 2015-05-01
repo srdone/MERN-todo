@@ -1,4 +1,5 @@
 import Input from '../layout-components/Input';
+import { getTodoById } from '../actions/rest';
 
 export default class EditTodo extends React.Component {
 
@@ -15,16 +16,14 @@ export default class EditTodo extends React.Component {
   componentWillMount() {
     var { router } = this.context;
     var todoId = router.getCurrentParams().todoId;
-    $.ajax({
-      url: 'http://localhost:8082' + '/todos/' + todoId,
-      dataType: 'json',
-      crossDomain: true,
-      success: (todo) => {
+
+    getTodoById(
+      todoId,
+      (todo) => {
         var copyOfTodo = $.extend(true, {}, todo);
         this.setState({todo: todo, originalTodo: copyOfTodo});
-      },
-      error: (xhr, status, err) => console.error('http://localhost:8082', status, err.toString())
-    })
+      }
+    );
   }
 
   _handleChange(e) {

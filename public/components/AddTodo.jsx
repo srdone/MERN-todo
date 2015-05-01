@@ -1,4 +1,4 @@
-import { saveTodo } from '../actions/rest.js';
+import { createTodo } from '../actions/rest.js';
 
 export default class AddTodo extends React.Component {
 
@@ -17,14 +17,11 @@ export default class AddTodo extends React.Component {
       dueDate: newTodoDueDateNode.value.trim()
     };
 
-    saveTodo(newTodo,
+    createTodo(newTodo,
       (savedTodo) => {
         newTodoTitleNode.value = '';
         newTodoDueDateNode.value = '';
         this.props.todoAdded(savedTodo);
-      },
-      (xhr, status, err) => {
-        console.error(this.props.url, status, err.toString());
       }
     );
 
