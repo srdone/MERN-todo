@@ -28,7 +28,39 @@ function getTodoById (id, success, error) {
     crossDomain: true,
     success: success,
     error: (xhr, status, err) => {
-      console.error(REST_ENDPOINT, status, err.toString())
+      console.error(REST_ENDPOINT, status, err.toString());
+      if (error) {
+        error(err);
+      }
+    }
+  })
+}
+
+function updateTodo (todo, success, error) {
+  $.ajax({
+    url: REST_ENDPOINT + '/todos/' + todo._id,
+    dataType: 'json',
+    method: "PUT",
+    data: todo,
+    crossDomain: true,
+    success: success,
+    error: (xhr, status, err) => {
+      console.error(REST_ENDPOINT, status, err.toString());
+      if (error) {
+        error(err);
+      }
+    }
+  })
+}
+
+function deleteTodo (id, success, error) {
+  $.ajax({
+    url: REST_ENDPOINT + '/todos/' + id,
+    method: "DELETE",
+    crossDomain: true,
+    success: success,
+    error: (xhr, status, err) => {
+      console.error(REST_ENDPOINT, status, err.toString());
       if (error) {
         error(err);
       }
@@ -38,5 +70,7 @@ function getTodoById (id, success, error) {
 
 module.exports = {
   createTodo: createTodo,
-  getTodoById: getTodoById
+  getTodoById: getTodoById,
+  updateTodo: updateTodo,
+  deleteTodo: deleteTodo
 };

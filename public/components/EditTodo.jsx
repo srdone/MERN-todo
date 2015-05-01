@@ -1,5 +1,5 @@
 import Input from '../layout-components/Input';
-import { getTodoById } from '../actions/rest';
+import { getTodoById, updateTodo, deleteTodo } from '../actions/rest';
 
 export default class EditTodo extends React.Component {
 
@@ -35,19 +35,7 @@ export default class EditTodo extends React.Component {
   _handleSubmit(e) {
     e.preventDefault();
 
-    $.ajax({
-      url: 'http://localhost:8082' + '/todos/' + this.state.todo._id,
-      dataType: 'json',
-      method: "PUT",
-      data: this.state.todo,
-      crossDomain: true,
-      success: (todo) => {
-        var copyOfTodo = $.extend(true, {}, todo);
-        this.setState({todo: todo, originalTodo: copyOfTodo});
-        this._goHome();
-      },
-      error: (xhr, status, err) => console.error('http://localhost:8082', status, err.toString())
-    })
+    updateTodo(this.state.todo, (todo) => this._goHome());
   }
 
   _handleCancel(e) {
@@ -61,15 +49,7 @@ export default class EditTodo extends React.Component {
   _handleDelete(e) {
     e.preventDefault();
 
-    $.ajax({
-      url: 'http://localhost:8082' + '/todos/' + this.state.todo._id,
-      method: "DELETE",
-      crossDomain: true,
-      success: (todo) => {
-        this._goHome();
-      },
-      error: (xhr, status, err) => console.error('http://localhost:8082', status, err.toString())
-    })
+    deleteTodo(this.state.todo._id, (todo) => this._goHome());
   }
 
   _goHome() {
