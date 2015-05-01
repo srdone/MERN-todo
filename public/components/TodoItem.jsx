@@ -1,10 +1,18 @@
-import {Link} from 'react-router'
+import {Link} from 'react-router';
+import { updateTodo } from '../actions/rest';
 
 export default class TodoItem extends React.Component {
 
   constructor() {
     super();
+    this.state = {todo: {}};
+
     this._handleEdit = this._handleEdit.bind(this);
+    this._handleChange = this._handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({todo: this.props.todo});
   }
 
   _handleEdit() {
@@ -12,12 +20,19 @@ export default class TodoItem extends React.Component {
     router.transitionTo('edit', {todoId: this.props.todo._id});
   }
 
+  _handleChange(e) {
+    var updatedTodo = $.extend({}, this.state.todo);
+    updatedTodo.completed = e.target.checked;
+
+    updateTodo(updatedTodo, (todo) => this.setState({todo: todo}));
+  }
+
   render() {
 
-    var dueDate = moment(this.props.todo.dueDate).format('M/D/YYYY');
+    var dueDate = moment(this.state.todo.dueDate).format('M/D/YYYY');
 
     var dueText = (() => {
-      if (this.props.todo.completed) {
+      if (this.state.todo.completed) {
         return <span>Complete!</span>
       } else {
         return <span>Due: {dueDate}</span>;
@@ -25,20 +40,18 @@ export default class TodoItem extends React.Component {
     })();
 
     var strikethroughWhenComplete = function (text) {
-      if (this.props.todo.completed) {
+      if (this.state.todo.completed) {
         return <del>{text}</del>
       } else {
         return <span>{text}</span>
       }
     }.bind(this);
 
-    var link = '/edit/' + this.props.todo._id;
-
     return (
       <div>
         <div className="input-group">
           <span className="input-group-addon">
-            <input type="checkbox" checked={this.props.todo.completed} />
+            <input type="checkbox" checked={this.state.todo.completed} onChange={this._handleChange}/>
           </span>
 
           <span className="input-group-addon">
