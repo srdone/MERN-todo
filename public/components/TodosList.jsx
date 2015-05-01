@@ -28,7 +28,7 @@ export default class TodosList extends React.Component {
   render() {
 
     var todos = this.state.todos.map((todo) => {
-      return <TodoItem todo={todo} className="row"/>
+      return <TodoItem todo={todo} className="row" key={todo._id} />
     });
 
     return (

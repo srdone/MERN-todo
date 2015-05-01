@@ -6,6 +6,7 @@ export default class EditTodo extends React.Component {
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleCancel = this._handleCancel.bind(this);
+    this._handleDelete = this._handleDelete.bind(this);
     this._goHome = this._goHome.bind(this);
   }
 
@@ -56,6 +57,20 @@ export default class EditTodo extends React.Component {
     this._goHome();
   }
 
+  _handleDelete(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: 'http://localhost:8082' + '/todos/' + this.state.todo._id,
+      method: "DELETE",
+      crossDomain: true,
+      success: (todo) => {
+        this._goHome();
+      },
+      error: (xhr, status, err) => console.error('http://localhost:8082', status, err.toString())
+    })
+  }
+
   _goHome() {
     var {router} = this.context;
     router.transitionTo('app');
@@ -92,6 +107,7 @@ export default class EditTodo extends React.Component {
         </div>
         <button className="btn btn-primary" onClick={this._handleSubmit}>Submit</button>
         <button className="btn btn-warning" onClick={this._handleCancel}>Cancel</button>
+        <button className="btn btn-danger" onClick={this._handleDelete}>Delete</button>
       </form>
     )
 
