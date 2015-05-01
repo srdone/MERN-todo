@@ -16,26 +16,44 @@ export default class TodoItem extends React.Component {
 
     var dueDate = moment(this.props.todo.dueDate).format('M/D/YYYY');
 
-    var itemText = (() => {
+    var dueText = (() => {
       if (this.props.todo.completed) {
-        return <del className="h5">{this.props.todo.title}: Due Date: {dueDate}</del>
+        return <span>Complete!</span>
       } else {
-        return <span className="h5">{this.props.todo.title}: Due Date: {dueDate}</span>
+        return <span>Due: {dueDate}</span>;
       }
     })();
+
+    var strikethroughWhenComplete = function (text) {
+      if (this.props.todo.completed) {
+        return <del>{text}</del>
+      } else {
+        return <span>{text}</span>
+      }
+    }.bind(this);
 
     var link = '/edit/' + this.props.todo._id;
 
     return (
       <div>
-        <div className="checkbox">
-          <label>
+        <div className="input-group">
+          <span className="input-group-addon">
             <input type="checkbox" checked={this.props.todo.completed} />
-            {itemText}
+          </span>
+
+          <span className="input-group-addon">
+            {dueText}
+          </span>
+
+          <span className="input-group-addon">
+            {strikethroughWhenComplete(this.props.todo.title)}
+          </span>
+
+          <span className="input-group-addon">
             <button className="btn btn-primary" onClick={this._handleEdit}>
               Edit
             </button>
-          </label>
+          </span>
         </div>
       </div>
     )
