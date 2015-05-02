@@ -4,6 +4,7 @@ import moment from 'moment';
 import {Link} from 'react-router';
 import { updateTodo } from '../actions/TodoActions';
 import TableRow from '../layout-components/TableRow';
+import Button from '../layout-components/Button';
 
 export default class TodoItem extends React.Component {
 
@@ -55,7 +56,7 @@ export default class TodoItem extends React.Component {
       <input type="checkbox" checked={this.state.todo.completed} onChange={this._handleChange}/>,
       strikethroughWhenComplete(this.props.todo.title),
       dueText,
-      <button className="btn btn-primary" onClick={this._handleEdit}>Edit</button>
+      <Button onClick={this._handleEdit}>Edit</Button>
     ];
 
     return (
