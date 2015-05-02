@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 import Input from '../layout-components/Input';
-import { getTodoById, updateTodo, deleteTodo } from '../actions/rest';
+import { getTodoById, updateTodo, deleteTodo } from '../actions/TodoActions';
 
 export default class EditTodo extends React.Component {
 

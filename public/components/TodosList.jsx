@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
-import { getTodos } from '../actions/rest';
+import { getTodos } from '../actions/TodoActions';
 
 export default class TodosList extends React.Component {
 

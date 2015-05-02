@@ -19,6 +19,7 @@
     "cors": "^2.6.0",
     "express": "^4.12.3",
     "jquery": "^2.1.4",
+    "lodash": "^3.8.0",
     "marked": "^0.3.3",
     "method-override": "^2.3.2",
     "moment": "^2.10.2",

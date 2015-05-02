@@ -1,6 +1,8 @@
 //Adapted to es6 from Facebook's TODOMVC at https://facebook.github.io/flux/docs/todo-list.html#content
 
 import AppDispatcher from '../dispatcher/Dispatcher';
+import TodoConstants from '../constants/TodoConstants';
+import TodoActions from '../actions/TodoActions';
 import { EventEmitter } from 'events';
 
 var CHANGE_EVENT = 'change';
@@ -8,25 +10,54 @@ var CHANGE_EVENT = 'change';
 // keeping this list private in the module
 var _todos = {};
 
-function create(todo) {
-  //add the todo and save it to the database
+function create(todo, success, failure) {
+  TodoActions.createTodo(
+    todo,
+    (todo) => {
+      _todos[todo._id] = todo;
+      if (success) {
+        success();
+      }
+    },
+    () => {
+      if (failure) {
+        failure()
+      }
+    }
+  )
 }
 
 function read(todoId) {
-  //return the todo
+  return _todos[todoId];
 }
 
-function update(todo) {
-  //update the todo and save it to the database
+//TODO: figure out how to provide pre-server response update with this pattern
+function update(todo, success, failure) {
+  TodoActions.updateTodo(
+    todo,
+    (todo) => {
+      _todos[todoId] = todo;
+      if (success) {
+        success();
+      }
+    },
+    () => {
+      if (failure) {
+        failure();
+      }
+    }
+  )
 }
 
-function destroy(todoId) {
-  // delete the todo from the list and from the database
+function destroy(todoId, success, failure) {
+  TodoActions.deleteTodo()
 }
 
-class TodoStore {
+class TodoStore extends EventEmitter {
 
   constructor() {
+    super();
+
     this.dispatcherIndex = AppDispatcher.register((payload) => {
       var action = payload.action;
       var todo;
@@ -35,11 +66,12 @@ class TodoStore {
         case TodoConstants.TODO_CREATE:
           todo = action.todo;
           create(todo);
+          this.emitChange();
           break;
 
         case TodoConstants.TODO_DESTROY:
           destroy(action._id);
-          TodoStore.emitChange();
+          this.emitChange();
           break;
 
         case TodoConstants.TODO_READ:
@@ -48,6 +80,7 @@ class TodoStore {
 
         case TodoConstants.TODO_UPDATE:
           update(action._todo);
+          this.emitChange();
           break;
 
       }
@@ -64,7 +97,7 @@ class TodoStore {
     this.emit(CHANGE_EVENT);
   }
 
-  addChangeListener() {
+  addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
 

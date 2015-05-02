@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 import {Link} from 'react-router';
-import { updateTodo } from '../actions/rest';
+import { updateTodo } from '../actions/TodoActions';
 
 export default class TodoItem extends React.Component {
 
