@@ -7,7 +7,7 @@ export default class TodosList extends React.Component {
 
   constructor() {
     super();
-    this.state = {todos: []}
+    this.state = {todos: []};
     this._handleNewTodo = this._handleNewTodo.bind(this);
   }
 
