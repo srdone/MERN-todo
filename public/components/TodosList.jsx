@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
+import TableHeader from '../layout-components/TableHeader';
+import Table from '../layout-components/Table';
 import { getTodos } from '../actions/TodoActions';
 
 export default class TodosList extends React.Component {
@@ -23,6 +25,8 @@ export default class TodosList extends React.Component {
 
   render() {
 
+    var tableHeaderTitles = ['Complete', 'Title', 'Due Date', 'Actions'];
+
     var header = (() => {
       if (this.state.todos.length !== 0) {
         return <div className="h3">Get These Things Done</div>
@@ -37,8 +41,13 @@ export default class TodosList extends React.Component {
       <div className="container-fluid">
         <AddTodo todoAdded={this._handleNewTodo}/>
         <hr />
+
+
         {header}
-        {todos}
+        <Table>
+          <TableHeader headers={tableHeaderTitles} />
+            {todos}
+        </Table>
       </div>
     )
   }

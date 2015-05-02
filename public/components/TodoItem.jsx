@@ -3,6 +3,7 @@ import $ from 'jquery';
 import moment from 'moment';
 import {Link} from 'react-router';
 import { updateTodo } from '../actions/TodoActions';
+import TableRow from '../layout-components/TableRow';
 
 export default class TodoItem extends React.Component {
 
@@ -38,7 +39,7 @@ export default class TodoItem extends React.Component {
       if (this.state.todo.completed) {
         return <span>Complete!</span>
       } else {
-        return <span>Due: {dueDate}</span>;
+        return <span>{dueDate}</span>;
       }
     })();
 
@@ -50,28 +51,17 @@ export default class TodoItem extends React.Component {
       }
     }.bind(this);
 
+    var rowItems = [
+      <input type="checkbox" checked={this.state.todo.completed} onChange={this._handleChange}/>,
+      strikethroughWhenComplete(this.props.todo.title),
+      dueText,
+      <button className="btn btn-primary" onClick={this._handleEdit}>Edit</button>
+    ];
+
     return (
-      <div>
-        <div className="input-group">
-          <span className="input-group-addon">
-            <input type="checkbox" checked={this.state.todo.completed} onChange={this._handleChange}/>
-          </span>
-
-          <span className="input-group-addon">
-            {dueText}
-          </span>
-
-          <span className="input-group-addon">
-            {strikethroughWhenComplete(this.props.todo.title)}
-          </span>
-
-          <span className="input-group-addon">
-            <button className="btn btn-primary" onClick={this._handleEdit}>
-              Edit
-            </button>
-          </span>
-        </div>
-      </div>
+      <TableRow>
+        {rowItems}
+      </TableRow>
     )
   }
 
