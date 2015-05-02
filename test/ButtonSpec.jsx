@@ -1,10 +1,10 @@
-var React = require('react');
-//var TestUtils = React.addons.TestUtils;
-var Button = require('../public/layout-components/Button.jsx');
+import React from 'react/addons';
+var TestUtils = React.addons.TestUtils;
+import Button from '../public/layout-components/Button.jsx'
 
 describe('Button', () => {
   it('should render', () => {
-
-    expect(Button).toBeTruthy();
+    var element = TestUtils.renderIntoDocument(<Button />);
+    expect(element).toBeTruthy();
   });
 });

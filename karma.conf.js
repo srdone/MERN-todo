@@ -38,7 +38,6 @@ module.exports = function(config) {
         loaders: [
           {
             test: /\.jsx$/,
-            excludes: ['node_modules'],
             loader: 'babel-loader'
           }
         ]
