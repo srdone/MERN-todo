@@ -12,3 +12,7 @@ export default class Button extends React.Component {
   }
 
 }
+
+Button.propTypes = {
+  onClick: React.PropTypes.func
+};
