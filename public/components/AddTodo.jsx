@@ -34,15 +34,15 @@ export default class AddTodo extends React.Component {
         <h4>Add New Todo</h4>
 
         <div className="form-group">
-          <label htmlFor="newTodoTitle">Title</label>
+          <label htmlFor="newTodoTitle">Title</label>{' '}
           <input type="text" className="form-control" id="newTodoTitle" ref="newTodoTitle" />
         </div>
-
+        {' '}
         <div className="form-group">
-          <label htmlFor="newTodoTitle">Due Date</label>
+          <label htmlFor="newTodoTitle">Due Date</label>{' '}
           <input type="date" className="form-control" id="newTodoDueDate" ref="newTodoDueDate" />
         </div>
-
+        {' '}
         <button className="btn btn-primary" onClick={this._handleSubmit}>Add New Todo</button>
 
       </form>
