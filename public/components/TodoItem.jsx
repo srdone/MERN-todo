@@ -61,7 +61,9 @@ export default class TodoItem extends React.Component {
 
     return (
       <TableRow>
-        {rowItems}
+        {rowItems.map((item, i) => {
+          return <span key={i}>{item}</span>
+        })}
       </TableRow>
     )
   }

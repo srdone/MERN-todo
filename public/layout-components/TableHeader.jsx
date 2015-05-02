@@ -4,8 +4,8 @@ export default class TableHeader extends React.Component {
 
   render() {
 
-    var headers = this.props.headers.map((header) => {
-      return <th>{header}</th>
+    var headers = this.props.headers.map((header, i) => {
+      return <th key={i}>{header}</th>
     });
 
     return (
