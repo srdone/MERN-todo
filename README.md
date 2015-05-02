@@ -15,3 +15,4 @@ Future Plans
 - Add Flux architecture (in process)
 - Further refine proptypes
 - Practice testing - try out TDD/BDD (framework in place now)
+    - Now that test framework works, additional items should be built using BDD
