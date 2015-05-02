@@ -23,6 +23,12 @@ export default class TodosList extends React.Component {
 
   render() {
 
+    var header = (() => {
+      if (this.state.todos.length !== 0) {
+        return <div className="h3">Get These Things Done</div>
+      }
+    })();
+
     var todos = this.state.todos.map((todo) => {
       return <TodoItem todo={todo} className="row" key={todo._id} />
     });
@@ -31,7 +37,7 @@ export default class TodosList extends React.Component {
       <div className="container-fluid">
         <AddTodo todoAdded={this._handleNewTodo}/>
         <hr />
-        <div className="h3">Get These Things Done</div>
+        {header}
         {todos}
       </div>
     )
