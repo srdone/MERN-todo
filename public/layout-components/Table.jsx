@@ -27,5 +27,6 @@ export default class Table extends React.Component {
 
 Table.propTypes = {
   headers: React.PropTypes.array.isRequired,
-  data: React.PropTypes.array.isRequired
+  data: React.PropTypes.array.isRequired,
+  children: React.PropTypes.instanceOf(TableRow)
 };
