@@ -2,6 +2,10 @@ import React from 'react';
 
 export default class TableHeader extends React.Component {
 
+  constructor() {
+    super();
+  }
+
   render() {
 
     var headers = this.props.headers.map((header, i) => {
@@ -19,3 +23,7 @@ export default class TableHeader extends React.Component {
   }
 
 }
+
+TableHeader.propTypes = {
+  headers: React.PropTypes.array.isRequired
+};

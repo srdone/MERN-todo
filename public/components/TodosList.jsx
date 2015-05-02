@@ -27,11 +27,7 @@ export default class TodosList extends React.Component {
 
     var tableHeaderTitles = ['Complete', 'Title', 'Due Date', 'Actions'];
 
-    var header = (() => {
-      if (this.state.todos.length !== 0) {
-        return <div className="h3">Get These Things Done</div>
-      }
-    })();
+    var caption= 'Get These Things Done';
 
     var todos = this.state.todos.map((todo) => {
       return <TodoItem todo={todo} className="row" key={todo._id} />
@@ -41,12 +37,8 @@ export default class TodosList extends React.Component {
       <div className="container-fluid">
         <AddTodo todoAdded={this._handleNewTodo}/>
         <hr />
-
-
-        {header}
-        <Table>
-          <TableHeader headers={tableHeaderTitles} />
-            {todos}
+        <Table caption={caption} headers={tableHeaderTitles}>
+          {todos}
         </Table>
       </div>
     )
