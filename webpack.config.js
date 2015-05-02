@@ -9,17 +9,16 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        excludes: ['node_modules'],
         loader: 'babel-loader'
       }
     ]
   },
-  externals: {
-    'react': 'React',
-    'marked': 'marked',
-    '$': '$',
-    'moment': 'moment'
-  },
+  //externals: {
+  //  //'react': 'React',
+  //  'marked': 'marked',
+  //  '$': '$',
+  //  'moment': 'moment'
+  //},
   resolve: {
     extensions: ['', '.js', '.jsx']
   }

@@ -1,3 +1,6 @@
+import React from 'react';
+import moment from 'moment';
+
 export default class Input extends React.Component {
 
   constructor(props) {

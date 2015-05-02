@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { REST_ENDPOINT } from '../constants/servers';
 
 function createTodo (todo, success, error) {
