@@ -8,8 +8,12 @@ export default class TableRow extends React.Component {
       return <td key={i}>{element}</td>
     });
 
-    return <tr>{rowElements}</tr>
+    return <tr className={this.props.status}>{rowElements}</tr>
 
   }
 
+}
+
+TableRow.propTypes = {
+  status: React.PropTypes.oneOf(['active', 'success', 'warning', 'danger', 'info'])
 }

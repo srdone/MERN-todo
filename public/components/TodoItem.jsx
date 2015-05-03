@@ -34,7 +34,15 @@ export default class TodoItem extends React.Component {
 
   render() {
 
+    var { completed } = this.state.todo;
+
     var dueDate = moment(this.state.todo.dueDate).format('M/D/YYYY');
+
+    var status = function (date) {
+      if (completed !== true && moment(date).isBefore(Date.now(), 'day')) {
+        return 'danger';
+      }
+    }.bind(this);
 
     var dueText = (() => {
       if (this.state.todo.completed) {
@@ -60,7 +68,7 @@ export default class TodoItem extends React.Component {
     ];
 
     return (
-      <TableRow>
+      <TableRow status={status(this.state.todo.dueDate)} >
         {rowItems.map((item, i) => {
           return <span key={i}>{item}</span>
         })}
