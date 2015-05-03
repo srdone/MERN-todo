@@ -39,8 +39,10 @@ export default class TodoItem extends React.Component {
     var dueDate = moment(this.state.todo.dueDate).format('M/D/YYYY');
 
     var status = function (date) {
-      if (completed !== true && moment(date).isBefore(Date.now(), 'day')) {
+      if (completed !== true && moment(Date.now()).isAfter(date, 'day')) {
         return 'danger';
+      } else if (completed !== true && moment(date).isSame(Date.now(), 'day')) {
+        return 'warning';
       }
     }.bind(this);
 

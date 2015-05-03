@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { REST_ENDPOINT } from '../constants/servers';
 
 function createTodo (todo, success, error) {
-
+debugger;
   var url = REST_ENDPOINT + '/todos';
 
   $.ajax({
