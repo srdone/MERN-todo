@@ -1,19 +1,19 @@
 ##MERN Todo App
 
-Note: Rendering is currently odd because of how React renders components.
-see: http://stackoverflow.com/questions/25147354/react-js-rendering-differences-with-bootstrap-3
-We need to add intentional white space to make sure we don't lose spacing
-
-#Things I'm learning as I go
-- propTypes are important - so we can instantly see the API exposed by the component
-- Make sure to import React in every component, or tests won't see React even if we import it in the test
-
 #Advantages and disadvantages of current structure
 - Separate data server
     - Have to configure separately, and make sure the scripts point to the right location
     - It is easy to know where to go
     - Probably won't separate it next time
     - Can we do server side React rendering?
+- Table Handling
+    - Current table accepts rows as children of the table, but header and caption are generated automatically
+    - It may be better for all components of the table to accept children, and have to build a table from those components
+    - We could also just pass in the objects through props, but I think it makes more sense to use a form of transclusion
+    - Currently each row of the table has it's own logic handling
+        - We could probably eliminate a lot of this by using Flux and then creating simple components for each cell
+        - We would then just pass down the data through props, and a change would trigger a re-render in everything
+        - The structure would be a lot simpler
 
 Future Plans
 - Add Flux architecture (in process)
