@@ -4,6 +4,7 @@ import AddTodo from './AddTodo';
 import TableHeader from '../layout-components/TableHeader';
 import Table from '../layout-components/Table';
 import { getTodos } from '../actions/TodoActions';
+import { sortTodos } from '../utilities/todoUtils';
 
 export default class TodosList extends React.Component {
 
@@ -29,7 +30,9 @@ export default class TodosList extends React.Component {
 
     var caption= 'Get These Things Done';
 
-    var todos = this.state.todos.map((todo) => {
+    var sortedTodos = sortTodos(this.state.todos);
+
+    var todoItems = sortedTodos.map((todo) => {
       return <TodoItem todo={todo} className="row" key={todo._id} />
     });
 
@@ -38,7 +41,7 @@ export default class TodosList extends React.Component {
         <AddTodo todoAdded={this._handleNewTodo}/>
         <hr />
         <Table caption={caption} headers={tableHeaderTitles}>
-          {todos}
+          {todoItems}
         </Table>
       </div>
     )
