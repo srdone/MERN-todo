@@ -20,6 +20,7 @@
 - Using es6 modules and web pack really helps make the app modular and maintainable.
 - React Router
     - Probably overkill for this size of project, but good to know some basics
+- Using reqwest or some other small ajax library, plus using react-addons would probably be better than including jQuery
 
 Future Plans
 - Add Flux architecture (in process)
