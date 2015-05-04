@@ -18,6 +18,8 @@
 - Sorting functions separated in their own module
     - Keeps the sort logic able to be used in multiple places in the app
 - Using es6 modules and web pack really helps make the app modular and maintainable.
+- React Router
+    - Probably overkill for this size of project, but good to know some basics
 
 Future Plans
 - Add Flux architecture (in process)
