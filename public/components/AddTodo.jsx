@@ -18,7 +18,6 @@ export default class AddTodo extends React.Component {
       title: newTodoTitleNode.value.trim(),
       dueDate: moment(newTodoDueDateNode.value).startOf('day').toDate()
     };
-    debugger;
 
     createTodo(newTodo,
       (savedTodo) => {

@@ -33,6 +33,7 @@ export default class EditTodo extends React.Component {
   _handleChange(e) {
     var newTodoState = $.extend({}, this.state.todo);
     newTodoState[e.target.id] = e.target.id === 'completed' ? e.target.checked : e.target.value;
+    newTodoState[e.target.id] = e.target.id === 'dueDate' ? moment(e.target.value).startOf('day').toDate() : e.target.value;
     this.setState({todo: newTodoState});
   }
 
