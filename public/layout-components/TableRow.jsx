@@ -16,4 +16,4 @@ export default class TableRow extends React.Component {
 
 TableRow.propTypes = {
   status: React.PropTypes.oneOf(['active', 'success', 'warning', 'danger', 'info'])
-}
+};

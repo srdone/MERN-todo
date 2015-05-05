@@ -1,5 +1,5 @@
 //Adapted to es6 from Facebook's TODOMVC at https://facebook.github.io/flux/docs/todo-list.html#content
-
+//TODO: complete and implement store
 import AppDispatcher from '../dispatcher/Dispatcher';
 import TodoConstants from '../constants/TodoConstants';
 import TodoActions from '../actions/TodoActions';

@@ -1,8 +1,9 @@
 import $ from 'jquery';
 import { REST_ENDPOINT } from '../constants/servers';
+//TODO: make sure this follows the Flux pattern as defined by Facebook
 
 function createTodo (todo, success, error) {
-debugger;
+
   var url = REST_ENDPOINT + '/todos';
 
   $.ajax({

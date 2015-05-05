@@ -62,6 +62,9 @@ export default class TodoItem extends React.Component {
       }
     }.bind(this);
 
+    //TODO: Make resort happen when complete box is checked - once Flux is implemented, this will be easier
+    //TODO: Make checkbox pretty
+    //TODO: Increase text sizing
     var rowItems = [
       <input type="checkbox" checked={this.state.todo.completed} onChange={this._handleChange}/>,
       strikethroughWhenComplete(this.props.todo.title),

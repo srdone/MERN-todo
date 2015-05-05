@@ -66,16 +66,12 @@ export default class EditTodo extends React.Component {
 
     var { title, dueDate, completed } = this.state.todo;
 
+    //TODO: we have this in multiple spots - should abstract as part of an input component
     dueDate = moment(dueDate).format('YYYY-MM-DD');
 
     return (
       <div className="container-fluid">
         <form>
-          <Input label="Todo Title"
-                 type="text"
-                 id="title"
-                 value={title}
-                 onChange={this._handleChange} />
 
           <div className="form-group">
             <label htmlFor="title">Todo Title</label>

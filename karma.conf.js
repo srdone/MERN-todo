@@ -37,7 +37,7 @@ module.exports = function(config) {
       module: {
         loaders: [
           {
-            test: /\.jsx$/,
+            test: /\.jsx?$/,
             loader: 'babel-loader'
           }
         ]

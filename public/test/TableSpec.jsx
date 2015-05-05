@@ -3,7 +3,7 @@ var TestUtils = React.addons.TestUtils;
 
 import Table from '../layout-components/Table';
 import TableHeader from '../layout-components/TableHeader';
-import TableRow from '../layout-components/TableRow';
+var TableRow = require('../layout-components/TableRow');
 
 describe('Table', () => {
 

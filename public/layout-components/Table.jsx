@@ -26,4 +26,6 @@ export default class Table extends React.Component {
 
 Table.propTypes = {
   headers: React.PropTypes.array.isRequired
+  //TODO: implement check for TableRow or anything like one
+  //TODO: implement check for TableHeader count matching column count in TableRow (if possible)
 };

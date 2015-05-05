@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
+//TODO: fix issue with initial value not initializing
+
 export default class Input extends React.Component {
 
   constructor(props) {

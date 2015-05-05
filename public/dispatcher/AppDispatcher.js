@@ -1,5 +1,5 @@
 //Adapted to es6 from Facebook's TODOMVC at https://facebook.github.io/flux/docs/todo-list.html#content
-
+//TODO: implement dispatcher
 export default class AppDispatcher extends Dispatcher {
 
   handleViewAction(action) {
