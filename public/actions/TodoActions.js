@@ -1,5 +1,6 @@
 var $ = require('jquery');
-var REST_ENDPOINT = require('../constants/servers').REST_ENDPOINT;
+var SERVER_CONSTANTS = require('../constants/servers');
+var REST_ENDPOINT = SERVER_CONSTANTS.REST_ENDPOINT;
 //TODO: make sure this follows the Flux pattern as defined by Facebook
 
 function createTodo (todo, success, error) {
