@@ -26,6 +26,7 @@ function createTodo (todo, success, error) {
 function getTodoById (id, success, error) {
   $.ajax({
     url: REST_ENDPOINT + '/todos/' + id,
+    method: 'GET',
     dataType: 'json',
     crossDomain: true,
     success: success,
@@ -42,7 +43,7 @@ function updateTodo (todo, success, error) {
   $.ajax({
     url: REST_ENDPOINT + '/todos/' + todo._id,
     dataType: 'json',
-    method: "PUT",
+    method: 'PUT',
     data: todo,
     crossDomain: true,
     success: success,
@@ -58,7 +59,7 @@ function updateTodo (todo, success, error) {
 function deleteTodo (id, success, error) {
   $.ajax({
     url: REST_ENDPOINT + '/todos/' + id,
-    method: "DELETE",
+    method: 'DELETE',
     crossDomain: true,
     success: success,
     error: (xhr, status, err) => {
@@ -73,6 +74,7 @@ function deleteTodo (id, success, error) {
 function getTodos (success, error) {
   $.ajax({
     url: REST_ENDPOINT + '/todos',
+    method: 'GET',
     dataType: 'json',
     crossDomain: true,
     success: success,
