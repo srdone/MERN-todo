@@ -28,4 +28,3 @@ Future Plans
 - Practice testing - try out TDD/BDD (framework in place now)
     - Now that test framework works, additional items should be built using BDD
 - Use immutable.js for a more robust application design
-- Implement rewire properly - currently has issues with importing

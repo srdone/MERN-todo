@@ -1,6 +1,6 @@
 //Copied from https://github.com/kastork/react-karma-rewire-webpack/blob/master/test/rewireModule.js
-//TODO: implement rewire properly - right now I'm having trouble importing it
-export default rewireModule = function rewireModule (rewiredModule, varValues) {
+
+var rewireModule = function rewireModule (rewiredModule, varValues) {
 
   var rewiredReverts = [];
 
@@ -24,3 +24,5 @@ export default rewireModule = function rewireModule (rewiredModule, varValues) {
   return rewiredModule;
 
 };
+
+module.exports = rewireModule;

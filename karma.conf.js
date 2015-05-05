@@ -1,9 +1,8 @@
 // Karma configuration
 // Generated on Fri May 01 2015 19:19:13 GMT-0600 (MDT)
+var rewirePlugin = require('rewire-webpack');
 
 module.exports = function(config) {
-
-  var rewirePlugin = require('rewire-webpack');
 
   config.set({
 
