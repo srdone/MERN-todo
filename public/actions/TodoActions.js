@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import { REST_ENDPOINT } from '../constants/servers';
+var $ = require('jquery');
+var REST_ENDPOINT = require('../constants/servers').REST_ENDPOINT;
 //TODO: make sure this follows the Flux pattern as defined by Facebook
 
 function createTodo (todo, success, error) {
@@ -8,7 +8,7 @@ function createTodo (todo, success, error) {
 
   $.ajax({
     url: url,
-    type: 'POST',
+    method: 'POST',
     dataType: 'json',
     crossDomain: true,
     data: todo,
