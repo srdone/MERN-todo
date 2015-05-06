@@ -39,6 +39,7 @@ export default class TodosList extends React.Component {
 
   render() {
 
+    //TODO: add a delete button
     var tableHeaderTitles = ['Complete', 'Title', 'Due Date', 'Actions'];
 
     var caption= 'Get These Things Done';

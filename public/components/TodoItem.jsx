@@ -23,6 +23,7 @@ export default class TodoItem extends React.Component {
   }
 
   _handleChange(e) {
+    //TODO: pull this out into a todo checkbox that can be reused
     var updatedTodo = $.extend({}, this.props.todo);
     updatedTodo.completed = e.target.checked;
 

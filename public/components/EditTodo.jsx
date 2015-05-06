@@ -89,6 +89,7 @@ export default class EditTodo extends React.Component {
 
   render() {
 
+    //TODO: replace delete button with a DeleteButton component
     var { title, dueDate, completed } = this.state.todo;
 
     //TODO: we have this in multiple spots - should abstract as part of an input component
