@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 import {Link} from 'react-router';
-import { updateTodo } from '../actions/todoCRUD';
+import { updateTodo } from '../utilities/todoCRUD';
 import TableRow from '../layout-components/TableRow';
 import Button from '../layout-components/Button';
 

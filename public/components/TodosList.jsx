@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
 import TableHeader from '../layout-components/TableHeader';
 import Table from '../layout-components/Table';
-import { getTodos } from '../actions/todoCRUD';
+import { getTodos } from '../utilities/todoCRUD';
 import { sortTodos } from '../utilities/todoUtils';
 
 export default class TodosList extends React.Component {

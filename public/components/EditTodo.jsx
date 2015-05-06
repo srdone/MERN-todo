@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
-import { getTodoById, updateTodo, deleteTodo } from '../actions/todoCRUD';
+import { getTodoById, updateTodo, deleteTodo } from '../utilities/todoCRUD';
 
 export default class EditTodo extends React.Component {
 

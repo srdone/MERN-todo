@@ -1,5 +1,5 @@
 import React from 'react';
-import { createTodo } from '../actions/todoCRUD';
+import { createTodo } from '../utilities/todoCRUD';
 import moment from 'moment';
 
 export default class AddTodo extends React.Component {
