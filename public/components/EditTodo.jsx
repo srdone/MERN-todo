@@ -3,6 +3,9 @@ import $ from 'jquery';
 import moment from 'moment';
 import { getTodoById, updateTodo, deleteTodo } from '../utilities/todoCRUD';
 
+var TodoStore = require('../stores/TodoStore');
+var TodoActions = require('../actions/TodoActions');
+
 export default class EditTodo extends React.Component {
 
   constructor(props) {
@@ -14,32 +17,39 @@ export default class EditTodo extends React.Component {
     this._handleCancel = this._handleCancel.bind(this);
     this._handleDelete = this._handleDelete.bind(this);
     this._goHome = this._goHome.bind(this);
+    this._handleCheckboxChange = this._handleCheckboxChange.bind(this);
   }
 
   componentWillMount() {
     var { router } = this.context;
     var todoId = router.getCurrentParams().todoId;
 
-    getTodoById(
-      todoId,
-      (todo) => {
-        var copyOfTodo = $.extend(true, {}, todo);
-        this.setState({todo: todo, originalTodo: copyOfTodo});
-      }
-    );
+    var todo = TodoStore.getById(todoId);
+    var copyOfTodo = $.extend(true, {}, todo);
+    this.setState({todo: todo, originalTodo: copyOfTodo});
+    console.log('state', this.state);
   }
 
   _handleChange(e) {
     var newTodoState = $.extend({}, this.state.todo);
-    newTodoState[e.target.id] = e.target.id === 'completed' ? e.target.checked : e.target.value;
+    //TODO: Abstract the logic below into a new 'input' component
     newTodoState[e.target.id] = e.target.id === 'dueDate' ? moment(e.target.value).startOf('day').toDate() : e.target.value;
+    this.setState({todo: newTodoState});
+  }
+
+  _handleCheckboxChange(e) {
+    //TODO: Abstract this logic into a new 'input' component
+    var currentTodo = this.state.todo;
+    var newTodoState = $.extend({}, currentTodo);
+    newTodoState.completed = e.target.checked;
     this.setState({todo: newTodoState});
   }
 
   _handleSubmit(e) {
     e.preventDefault();
 
-    updateTodo(this.state.todo, (todo) => this._goHome());
+    TodoActions.update(this.state.todo);
+    this._goHome();
   }
 
   _handleCancel(e) {
@@ -53,7 +63,8 @@ export default class EditTodo extends React.Component {
   _handleDelete(e) {
     e.preventDefault();
 
-    deleteTodo(this.state.todo._id, (todo) => this._goHome());
+    TodoActions.destroy(this.state.todo);
+    this._goHome();
   }
 
   _goHome() {
@@ -93,7 +104,7 @@ export default class EditTodo extends React.Component {
 
           <div className="checkbox">
             <label>
-              <input type="checkbox" checked={completed} onChange={this._handleChange} id="completed"/>
+              <input type="checkbox" checked={completed} onChange={this._handleCheckboxChange} id="completed"/>
             </label>
           </div>
           <div className="btn-group">

@@ -3,8 +3,10 @@ import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
 import TableHeader from '../layout-components/TableHeader';
 import Table from '../layout-components/Table';
-import { getTodos } from '../utilities/todoCRUD';
 import { sortTodos } from '../utilities/todoUtils';
+
+var TodoStore = require('../stores/TodoStore');
+var TodoActions = require('../actions/TodoActions');
 
 export default class TodosList extends React.Component {
 
@@ -12,16 +14,27 @@ export default class TodosList extends React.Component {
     super();
     this.state = {todos: []};
     this._handleNewTodo = this._handleNewTodo.bind(this);
+    this._onChange = this._onChange.bind(this);
+  }
+
+  _onChange() {
+    this.setState({todos: TodoStore.getAll()});
+  }
+
+  componentWillMount() {
+    TodoStore.addChangeListener(this._onChange);
   }
 
   componentDidMount() {
-    getTodos((todos) => this.setState({todos: todos}));
+    this.setState({todos: TodoStore.getAll()});
+  }
+
+  componentWillUnmount() {
+    TodoStore.removeChangeListener(this._onChange);
   }
 
   _handleNewTodo(newTodo) {
-    var todos = this.state.todos;
-    todos.unshift(newTodo);
-    this.setState({todos: todos});
+    TodoActions.create(newTodo);
   }
 
   render() {

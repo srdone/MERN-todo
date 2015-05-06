@@ -1,6 +1,7 @@
 import React from 'react';
-import { createTodo } from '../utilities/todoCRUD';
 import moment from 'moment';
+
+var TodoActions = require('../actions/TodoActions');
 
 export default class AddTodo extends React.Component {
 
@@ -19,13 +20,9 @@ export default class AddTodo extends React.Component {
       dueDate: moment(newTodoDueDateNode.value).startOf('day').toDate()
     };
 
-    createTodo(newTodo,
-      (savedTodo) => {
-        newTodoTitleNode.value = '';
-        newTodoDueDateNode.value = '';
-        this.props.todoAdded(savedTodo);
-      }
-    );
+    TodoActions.create(newTodo);
+    newTodoTitleNode.value = '';
+    newTodoDueDateNode.value = '';
 
   };
 
