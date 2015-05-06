@@ -2,7 +2,7 @@ var rewire = require('rewire');
 var rewireModule = require('./rewireModule');
 
 var SERVER_CONSTANTS = require('../constants/servers');
-var TodoActions = rewire('../actions/TodoActions');
+var TodoActions = rewire('../actions/todoCRUD');
 
 var $SuccessMock = {
 
