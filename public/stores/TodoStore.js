@@ -55,7 +55,6 @@ class TodoStore extends EventEmitter {
   }
 
   getAll() {
-    //TODO: here would be a good place to use promises
     if(isInitialized) {
       return _.toArray(_todos);
     } else {
