@@ -65,7 +65,12 @@ class TodoStore extends EventEmitter {
   }
 
   getById(id) {
-    return _todos[id];
+    if(isInitialized) {
+      return _todos[id];
+    } else {
+      initializeTodos();
+      return _todos[id];
+    }
   }
 
   emitChange() {

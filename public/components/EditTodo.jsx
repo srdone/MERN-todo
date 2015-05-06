@@ -11,23 +11,38 @@ export default class EditTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {todo: {}, originalTodo: {}};
+    this.todoId = '';
 
+    //TODO: create external function to handle this pattern
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleCancel = this._handleCancel.bind(this);
     this._handleDelete = this._handleDelete.bind(this);
     this._goHome = this._goHome.bind(this);
     this._handleCheckboxChange = this._handleCheckboxChange.bind(this);
+    this._onChange = this._onChange.bind(this);
   }
 
   componentWillMount() {
-    var { router } = this.context;
-    var todoId = router.getCurrentParams().todoId;
+    TodoStore.addChangeListener(this._onChange);
+  }
 
-    var todo = TodoStore.getById(todoId);
+  componentDidMount() {
+    var { router } = this.context;
+    this.todoId = router.getCurrentParams().todoId;
+    var todo = TodoStore.getById(this.todoId);
     var copyOfTodo = $.extend(true, {}, todo);
     this.setState({todo: todo, originalTodo: copyOfTodo});
-    console.log('state', this.state);
+  }
+
+  componentWillUnmount() {
+    TodoStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange() {
+    var todo = TodoStore.getById(this.todoId);
+    var copyOfTodo = $.extend(true, {}, todo);
+    this.setState({todo: todo, originalTodo: copyOfTodo});
   }
 
   _handleChange(e) {
